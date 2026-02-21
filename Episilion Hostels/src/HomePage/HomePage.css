@@ -1,0 +1,93 @@
+/*HOSTELS INFORMATION*/
+.hostels-cards{
+  display: flex;/*THIS WILL MAKE THE CARDS SIT SIDE BY SIDE*/
+  flex-wrap: wrap;/*THIS WILL MAKE THE CARD WRAP TO THE NEXT LINE IF THERES NOT ENOUGHT SPACE*/
+  gap: 1rem;
+  justify-content: center;/*THIS WILL MAKE THE CARDS CCENTER HORIZONTALLY*/
+  padding: 1rem;
+  box-sizing: border-box;/*THIS WILL INLCUDE PADDING IN WIDTH*/
+  height: 100%;
+  margin-bottom: 80px;
+}
+ .hostel-card{
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  flex: 1 1 250px;/*THE 250PX HERE IS THAT THE STARTING SIZE OF THE CARD WILL BE 250PX: THIS IS THE FLEX BASIS*/
+  max-width: 300px;
+  min-width: 200px;
+  box-sizing: border-box;/*THIS WILL MAKE SURE THAT THE TOTAL WIDTH WILL ALWAYS BE 200PX NO MATTER HOW MUCH PADDING OR BORDER YOU ADD INSIDE*/
+  text-align: left;
+  transition: transform 0.3s;
+  margin-bottom: 50px;
+}
+
+.image-container{
+  position: relative;/*ALLOWS ABOLUTE POSITIONING INSIDE*/
+  display: inline-block;
+}
+#hostel-card-image{
+  width: 100%;
+  height: 60%;
+  border-radius: 7px 7px 0px 0px;
+  display: block;
+}
+.overlay{
+  position: absolute; 
+  bottom: 8px; /* distance from bottom edge */ 
+  right: 8px; /* distance from right edge */ 
+  background: #ffffff; /* semi-transparent background */ 
+  color: black; padding: 4px 8px; 
+  border-radius: 4px; font-size: 0.9rem;
+  font-weight: bolder;
+}
+
+.hostel-type-text{
+  position: absolute; 
+  bottom: 8px; /* distance from bottom edge */ 
+  left: 8px; /* distance from right edge */ 
+  background: #ffffff; /* semi-transparent background */ 
+  color: black; padding: 4px 8px; 
+  border-radius: 4px; font-size: 0.9rem;
+  font-weight: bolder;
+}
+#hostel-price{
+  color: green;
+  font-size: clamp(1rem,2vw, 1.2rem);
+  font-family: PriceMart;
+}
+#hostel-name{
+  width: 100%;
+  font-size: clamp(1.2rem, 2vw, 1rem);
+  margin-top: 0px;
+  font-family: Playfair Display;
+  font-weight: bolder;
+    
+}
+#hostel-distace{
+  margin: 0.2rem;
+  font-size: clamp(1rem, 2vw, 1.1rem);/*RESPONSIVE FONT SIZE*/
+  font-family: Comorant-Garamond;
+}
+#hostel-perks{
+  font-family: Hezba;
+  text-align: center;
+  text-decoration: solid;
+}
+.hostel-card:hover{
+    transform: translateY(-5px);
+}
+.view-more-details{
+  width: 100%;
+  height: 40px;
+  font-size: clamp(1.0rem, 2vw, 1rem);
+  background-color: rgb(17, 175, 227);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.view-more-details:hover{
+  background-color: rgb(8, 92, 120);
+}
+.td-vetical{
+    vertical-align: top;
+}

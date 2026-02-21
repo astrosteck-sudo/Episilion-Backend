@@ -1,15 +1,14 @@
 import './App.css'
-import { HomePageHeader } from './HomePage/HomePageHeader';
 import { Routes, Route } from 'react-router' 
+import { HomePage } from './HomePage/HomePage';
 
 function App() {
   return (
     <>
     <Routes>
-        <Route index element={<HomePageHeader/>}></Route>
+        {/* <Route index element={<PageHeader/>}></Route> */}
+        <Route index element={<HomePage/>}></Route>
     </Routes>
-
-    
     </>
   )
 }
