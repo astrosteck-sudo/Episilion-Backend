@@ -4,6 +4,8 @@ import { HomePage } from './HomePage/HomePage';
 import { MoreDetailsPage } from './MoreDetailsPage/MoreDetailsPage';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { SignUpPage } from './logins/SignUpPage';
+import { LoginPage } from './logins/loginPage.jsx';
 
 function App() {
   const [hostelsCardData, sethostelsCardData] = useState([]);
@@ -25,6 +27,8 @@ function App() {
         {/* <Route index element={<PageHeader/>}></Route> */}
         <Route index element={<HomePage hostelsCardData={hostelsCardData} navlink={navlink} setNavLink={setNavLink} />}/>
         <Route path="moreDetails" element={<MoreDetailsPage hostelsCardData={hostelsCardData} navlink={navlink} setNavLink={setNavLink} />} />
+        <Route path="signup" element={<SignUpPage navlink={navlink} setNavLink={setNavLink} />} />
+        <Route path="login" element={<LoginPage navlink={navlink} setNavLink={setNavLink} />} />
       </Routes>
     </>
   )

@@ -34,8 +34,8 @@ export function PageHeader({ substituteLink, navlink, setNavLink }) {
                     <Link className="link" to="/">Ask Episilion</Link>
                     <Link className="link" to="/">More From Us</Link>
                     <div className="login-systems">
-                        <a to="/">LOGIN</a>
-                        <a to="/">SIGN UP</a>
+                        <Link to="/login">LOGIN</Link>
+                        <Link to="/signup">SIGN UP</Link>
                     </div>
                 </nav>
 
