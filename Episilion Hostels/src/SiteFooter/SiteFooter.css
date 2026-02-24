@@ -1,9 +1,10 @@
 
 /*THIS IS THE FOOTER SECTION*/
 .site-footer {
-  position: fixed; /* This makes the footer fixed at the bottom */
+  /* position: fixed; 
   bottom: 0;
-  left: 0;
+  left: 0; */
+  background: #333; color: #fff; text-align: center; padding: 1rem;
   width: 100%;
   background: #333;
   color: #fff;

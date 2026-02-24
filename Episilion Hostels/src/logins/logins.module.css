@@ -34,6 +34,7 @@ main{
   /* background-color: #d3c84d; */
   background-color: white;
   /* background-color: rgb(85, 138, 85); */
+  border: solid red;
   border-radius: 0px 0px 10px 10px;
   display: flex;
   justify-content: center;
@@ -41,7 +42,7 @@ main{
   box-shadow: 1px 2px 20px 5px rgb(38, 35, 35);/*Right, down*/
 }
 
-h2{
+form h2{
   font-size: 2em;
   color: #fc0a02;
   text-align: center;
@@ -81,7 +82,7 @@ h2{
   border: none;
   outline: none;
   font-size: 1em;
-  color: #fff;
+  color: black;
   padding: 0 35px 0 5px;
 }
 

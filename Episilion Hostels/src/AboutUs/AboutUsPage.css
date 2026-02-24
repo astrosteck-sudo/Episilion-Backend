@@ -1,0 +1,99 @@
+
+main{
+  padding: 10px;
+  margin-bottom: 80px;
+}
+
+
+.about-epeisilion-header, .meet-the-team-header{
+  text-align: center;
+  font-family: Playfair Display;
+  font-size: clamp(20px, 2vw, 35px);
+}
+.about-hero , .about-paragraph{
+  font-size: clamp(15px, 2vw, 20px);
+  font-family: lato;
+}
+h3{
+  font-size: clamp(15px, 2vw, 23px);
+  font-family: Playfair Display;
+  color: rgb(194, 8, 8);
+}
+.about-paragraph{
+  list-style: none;
+}
+.about-paragraph li::before{
+  list-style: none;
+  content: "";
+  background: url('../icons/green_double_circle_check_mark.jpg') no-repeat center center;
+  background-size: contain;   /* scales image nicely */
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  margin-right: 0.5em;
+}
+
+
+.team-cards{
+  display: flex;/*THIS WILL MAKE THE CARDS SIT SIDE BY SIDE*/
+  flex-wrap: wrap;/*THIS WILL MAKE THE CARD WRAP TO THE NEXT LINE IF THERES NOT ENOUGHT SPACE*/
+  gap: 1rem;
+  justify-content: center;/*THIS WILL MAKE THE CARDS CCENTER HORIZONTALLY*/
+  padding: 1rem;
+  box-sizing: border-box;/*THIS WILL INLCUDE PADDING IN WIDTH*/
+  height: 100%;
+}
+.team-card{
+  background-color: inherit;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  flex: 1 1 250px;/*THE 250PX HERE IS THAT THE STARTING SIZE OF THE CARD WILL BE 250PX: THIS IS THE FLEX BASIS*/
+  max-width: 300px;
+  min-width: 200px;
+  box-sizing: border-box;/*THIS WILL MAKE SURE THAT THE TOTAL WIDTH WILL ALWAYS BE 200PX NO MATTER HOW MUCH PADDING OR BORDER YOU ADD INSIDE*/
+  text-align: left;
+  transition: transform 0.3s;
+  margin-bottom: 50px;
+}
+.team-member-image{
+    height: 250px;
+    width: 100%;
+    position: relative;/*ALLOWS ABOLUTE POSITIONING INSIDE*/
+    display: inline-block;
+    overflow: hidden;
+}
+.team-member-image img{
+  height: 100%;
+  width: 100%;
+  border-radius: 7px 7px 0px 0px;
+  transition: transform .6s ease;
+}
+.team-member-image:hover img {
+  transform: scale(1.7);
+  /* object-fit: cover; */
+}
+h4{
+  font-family: Sancreek;
+  font-weight: lighter;
+  text-align: center;
+}
+
+table{
+  border: none;
+}
+.member-position-text{
+  font-family: Playfair Display;
+  font-size: clamp(12px, 2vw, 13.5px);
+  color: hsl(120, 93%, 27%);
+  text-align: center;
+  font-weight: bolder;
+}
+.member-role-text{
+  font-family: lato;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.site-footer{
+  position: fixed;
+}
