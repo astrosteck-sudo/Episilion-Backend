@@ -5,12 +5,12 @@ import './AboutUsPage.css'
 
 
 
-export function AboutUsPage() {
+export function AboutUsPage({ navlink, setNavLink }) {
 
 
     return (
         <>
-            <PageHeader />
+            <PageHeader navlink={navlink} setNavLink={setNavLink} />
 
             <main className='about-main'>
                 <section class="about-hero">

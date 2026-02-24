@@ -14,7 +14,7 @@
   font-size: clamp(15px, 2vw, 20px);
   font-family: lato;
 }
-h3{
+.about-main h3{
   font-size: clamp(15px, 2vw, 23px);
   font-family: Playfair Display;
   color: rgb(194, 8, 8);

@@ -7,6 +7,7 @@ import axios from 'axios';
 import { SignUpPage } from './logins/SignUpPage';
 import { LoginPage } from './logins/loginPage.jsx';
 import { AboutUsPage } from './AboutUs/AboutUsPage.jsx';
+import { MoreFromUsPage } from './MoreFromUs/MoreFromUsPage.jsx';
 
 
 
@@ -30,9 +31,10 @@ function App() {
         {/* <Route index element={<PageHeader/>}></Route> */}
         <Route index element={<HomePage hostelsCardData={hostelsCardData} navlink={navlink} setNavLink={setNavLink} />}/>
         <Route path="moreDetails" element={<MoreDetailsPage hostelsCardData={hostelsCardData} navlink={navlink} setNavLink={setNavLink} />} />
-        <Route path="aboutus" element={<AboutUsPage />} />
+        <Route path="aboutus" element={<AboutUsPage navlink={navlink} setNavLink={setNavLink} />} />
         <Route path="signup" element={<SignUpPage navlink={navlink} setNavLink={setNavLink} />} />
         <Route path="login" element={<LoginPage navlink={navlink} setNavLink={setNavLink} />} />
+        <Route path='morefromus' element={<MoreFromUsPage navlink={navlink} setNavLink={setNavLink} />}/>
       </Routes>
     </>
   )
