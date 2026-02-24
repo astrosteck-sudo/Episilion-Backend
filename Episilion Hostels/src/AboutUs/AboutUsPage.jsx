@@ -1,11 +1,23 @@
+import { useEffect, useState } from 'react'
 import { PageHeader } from '../PageHeader/PageHeader'
 import { SiteFooter } from '../SiteFooter/SiteFooter'
+import axios from 'axios'
+import { TeamCards } from './TeamCards'
 import './AboutUsPage.css'
 
 
 
-
 export function AboutUsPage({ navlink, setNavLink }) {
+    const [teamData, setTeamData] = useState([]);
+
+    const loadTeamCards = async () => {
+        const reposnse = await axios.get('./hostel_data/team_Members_data.json')
+        setTeamData(reposnse.data);     
+    }
+
+    useEffect(() => {
+        loadTeamCards();
+    },[])
 
 
     return (
@@ -55,7 +67,14 @@ export function AboutUsPage({ navlink, setNavLink }) {
 
                 <section class="team-section">
                     <h2 class="meet-the-team-header">Meet the Team</h2>
-                    <div class="team-cards"></div>
+                    <div class="team-cards">
+                        {teamData.map((teamMember) => {
+                            //WITH THIS FOR EACH TEAM MEMEBER IT WILL GENERATE A TeamCards COMPONENT
+                            return(
+                                <TeamCards key={teamData.Name} teamMember={teamMember}/> 
+                            )
+                        })}
+                    </div>
                 </section>
 
                 <section class="cta">

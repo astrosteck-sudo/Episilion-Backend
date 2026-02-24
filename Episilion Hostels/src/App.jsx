@@ -1,4 +1,3 @@
-import './App.css'
 import { Routes, Route } from 'react-router'
 import { HomePage } from './HomePage/HomePage';
 import { MoreDetailsPage } from './MoreDetailsPage/MoreDetailsPage';
@@ -8,7 +7,7 @@ import { SignUpPage } from './logins/SignUpPage';
 import { LoginPage } from './logins/loginPage.jsx';
 import { AboutUsPage } from './AboutUs/AboutUsPage.jsx';
 import { MoreFromUsPage } from './MoreFromUs/MoreFromUsPage.jsx';
-
+import './App.css'
 
 
 function App() {
@@ -16,7 +15,7 @@ function App() {
   const [navlink, setNavLink] = useState(false);
 
   const loadHostelsCard = async () => {
-    const response = await axios.get('/hostel_data/hostel_data.json')
+    const response = await axios.get('./hostel_data/hostel_data.json')
     sethostelsCardData(response.data);
   }
   useEffect(() => {
