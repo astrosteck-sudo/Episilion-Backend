@@ -21,8 +21,8 @@ export function SignUpPage({ navlink, setNavLink }) {
         <>
             <title>Sign-Up | Episilion Hostels</title>
             <PageHeader navlink={navlink} setNavLink={setNavLink} />
-            <div className="wrapper">
-                <main>
+            <div className={styles["wrapper"]}>
+                <main className={styles["logins-main"]}>
                     <div className={styles["login-box"]}>
                         <form action="">
                             <h2>Sign Up</h2>

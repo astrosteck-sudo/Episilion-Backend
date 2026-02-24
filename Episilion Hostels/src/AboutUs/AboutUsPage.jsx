@@ -12,7 +12,7 @@ export function AboutUsPage() {
         <>
             <PageHeader />
 
-            <main>
+            <main className='about-main'>
                 <section class="about-hero">
                     <h2 class="about-epeisilion-header">About Episilion</h2>
                     <p class="about-paragraph">Helping students find, safe, afforadable, and comfortable, hostels with ease</p>
