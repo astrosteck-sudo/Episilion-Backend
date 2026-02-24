@@ -84,7 +84,6 @@ export function AboutUsPage({ navlink, setNavLink }) {
                 <a href="hostels.html "class="btn">Browse Hostels</a>
                 </section>
             </main >
-
         <SiteFooter />
         </>
     )

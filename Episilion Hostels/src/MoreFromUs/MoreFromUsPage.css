@@ -8,9 +8,18 @@
   margin-bottom: 80px;
 }
 
+#status{
+  color: green;
+  font-weight: bold;
+  margin: 5px;
+}
 
 .project-card{
   padding: 10px;
+}
+#project-link{
+  text-decoration: none;
+  margin: 5px;
 }
 
 .project-heading{
