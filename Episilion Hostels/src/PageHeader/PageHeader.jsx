@@ -1,6 +1,7 @@
 import './PageHeader.css';
 import HamburgerButton from '../assets/icons/hamburger_button_2.png';
 import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export function PageHeader({ substituteLink, navlink, setNavLink }) {
     // const [navlink, setNavLink] = useState(false)
@@ -30,9 +31,9 @@ export function PageHeader({ substituteLink, navlink, setNavLink }) {
                 </Link>
                 <nav className={`navigation-links ${navlink ? 'active' : ''}`}>
                     {substituteLink}
-                    <Link className="link" to="/aboutus">About Us</Link>
+                    <NavLink className="link about-us-link" to="/aboutus">About Us</NavLink>
                     <Link className="link" to="/">Ask Episilion</Link>
-                    <Link className="link" to="/morefromus">More From Us</Link>
+                    <NavLink className="link more-from-us" to="/morefromus">More From Us</NavLink>
                     <div className="login-systems">
                         <Link to="/login">LOGIN</Link>
                         <Link to="/signup">SIGN UP</Link>

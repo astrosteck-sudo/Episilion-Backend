@@ -82,8 +82,20 @@
   display: none;
 }
 
-
-
+.about-us-link.active{
+  background: linear-gradient(45deg, #2e3192, #1bffff);
+  padding: 10px;
+  border-radius: 5px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.more-from-us.active{
+  background: linear-gradient(45deg, #2e3192, #1bffff);
+  padding: 10px;
+  border-radius: 5px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
 
 
 
