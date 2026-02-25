@@ -12,10 +12,13 @@ import { useRef, useState } from "react";
 
 
 export function HomePage({ hostelsCardData, navlink, setNavLink, sethostelsCardData, originalHostelCardData }) {
+    const [gender, setGender] = useState('');
+    const [genderText, setGenderText] = useState('Search');
+    const [minPrice, setMinPrice] = useState();
+    const [maxPrice, setMaxPrice] = useState();
 
-    
     const filterMenu = useRef(null) //THIS WILL SELECT THE filter menu 
-    
+
     function openFilterMenu() {
         if (filterMenu.current) {
             filterMenu.current.style.opacity = 1;
@@ -36,39 +39,67 @@ export function HomePage({ hostelsCardData, navlink, setNavLink, sethostelsCardD
         }
     })
 
-    const [gender, setGender] = useState('');
-    const [genderText, setGenderText] = useState('Search')
+
     function filterHostelsByGender(parameter) {
-        setGenderText(parameter)//THIS WILL CHANGE THE TEXT IN THE search buttoN
+        setGenderText(parameter)//THIS WILL CHANGE THE TEXT IN THE search button
         setGender(parameter);//THIS WILL PUT THE CLCIKED GENDER INTO THE gender VARIABLE 
     }
+
+    
+
+
+    function userMinPrice(event) {
+        setMinPrice(event.target.value)
+    }
+    function userMaxPrice(event) {
+        setMaxPrice(event.target.value)
+    }
     function searchHostels() {
+        if (!gender && !minPrice && !maxPrice) {
+            filterMenu.current.style.opacity = 0;
+            filterMenu.current.style.pointerEvents = 'none';
+            return;
+        }
+
         //THIS FILTERS FROM THE originalHostelCardData AND PUTS THE VALUES INTO THE 
         //filteredHostels, THEN THE sethostelsCardData RESETS THE  hostelsCardData TO THE FILTERED
         //VALUES.
         // THE MAIN IDEA HERE IS , originalHostelCardData AND hostelsCardData HAS THE SAME VALUES AT THE START
         //OF THE PROGRAM, BUT hostelsCardData WILL ALWAYS CHANGE DEPENDING ON THE FILTER USED.
         //BUT THE FILTER WILL ALWAYS FILTER FROM THE UNCHANGING originalHostelCardData
-        const filteredHostels = originalHostelCardData.filter(
-            (hostel) => hostel.type === gender
-        );
+        if (gender && minPrice && maxPrice) {
+            const filteredHostels = originalHostelCardData.filter(
+                (hostel) => hostel.type === gender && hostel.pricing.priceMin >= minPrice && hostel.pricing.priceMin <= maxPrice
+            )
+            sethostelsCardData(filteredHostels);
+            filterMenu.current.style.opacity = 0;
+            filterMenu.current.style.pointerEvents = 'none';
+        } else if (gender || minPrice || maxPrice) {
+            const filteredHostels = originalHostelCardData.filter(
+                (hostel) => hostel.type === gender || hostel.pricing.priceMin >= minPrice && hostel.pricing.priceMin <= maxPrice
+            )
+            sethostelsCardData(filteredHostels);
+            filterMenu.current.style.opacity = 0;
+            filterMenu.current.style.pointerEvents = 'none';
+        }
+
+        //THIS RESET THE VALUES ON THE USER SCREEN
+        setMinPrice('');
+        setMaxPrice('');
+        setGender();
+        setGenderText('Search');
+
 
 
         //THIS IS A MORE EIFFICIENT CODE TO REPLACE THE ONE ABOVE BUT I DONT UNDERSTAND IT YET SO ITS COMMENTED
         // const filteredData = originalHostelCardData.filter(hostel => 
         //     selectedGender ? hostel.type === selectedGender : true)
-
-
-        sethostelsCardData(filteredHostels);
-        filterMenu.current.style.opacity = 0;
-        filterMenu.current.style.pointerEvents = 'none';
+        // sethostelsCardData(filteredHostels);
+        // filterMenu.current.style.opacity = 0;
+        // filterMenu.current.style.pointerEvents = 'none';
     }
 
-    // function openFilterMenu() { 
-    //     if (filterMenu.current) { 
-    //         filterMenu.current.style.opacity = 1; 
-    //     } 
-    // }
+
 
 
 
@@ -102,10 +133,26 @@ export function HomePage({ hostelsCardData, navlink, setNavLink, sethostelsCardD
                         <div className="price-filter">
                             <h3 className="filter-header">By Price</h3>
                             <div className="price-input-container">
-                                <input type="number" name="user-min-price" id="user-min-price" min="0" max="20000"
-                                    className="price-input js-min-price-input" placeholder="Minimum Price"></input>
-                                <input type="number" name="user-max-price" id="user-max-price" min="0" max="20000"
-                                    className="price-input js-max-price-input" placeholder="Maximum Price"></input>
+                                <input
+                                    type="number"
+                                    name="user-min-price"
+                                    id="user-min-price"
+                                    min="0" max="20000"
+                                    className="price-input js-min-price-input"
+                                    placeholder="Minimum Price"
+                                    onChange={userMinPrice}
+                                    value={minPrice}>
+                                </input>
+                                <input
+                                    type="number"
+                                    name="user-max-price"
+                                    id="user-max-price"
+                                    min="0" max="20000"
+                                    className="price-input js-max-price-input"
+                                    placeholder="Maximum Price"
+                                    onChange={userMaxPrice}
+                                    value={maxPrice}>
+                                </input>
                             </div>
                         </div>
                     </div>
