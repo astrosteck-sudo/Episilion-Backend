@@ -327,7 +327,7 @@ input[type=number] {
   margin-top: 30px;
   flex-direction: column;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 80px;
 }
 .not-found-icon{
   width: min(300px, 60%);

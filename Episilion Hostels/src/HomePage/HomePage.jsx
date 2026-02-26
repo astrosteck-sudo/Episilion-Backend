@@ -8,6 +8,7 @@ import boyImage from '../assets/icons/man.png'
 import girlImage from '../assets/icons/woman-avatar.png'
 import mixedImage from '../assets/icons/shuffle.png'
 import searchButton from '../assets/icons/search.png';
+import noResultImage from '../assets/icons/no-results-(1).png'
 import { useEffect, useRef, useState } from "react";
 
 
@@ -26,7 +27,7 @@ export function HomePage({ hostelsCardData, navlink, setNavLink, sethostelsCardD
 
 
 
-                                      //THIS IS FOR THE FILTER MENU
+    //THIS IS FOR THE FILTER MENU
     function openFilterMenu() {
         if (filterMenu.current) {
             console.log(filterMenu)
@@ -112,7 +113,7 @@ export function HomePage({ hostelsCardData, navlink, setNavLink, sethostelsCardD
 
 
 
-                        //THIS IS FOR THE SUGGESTIONBOX AND SEARCH BAR
+    //THIS IS FOR THE SUGGESTIONBOX AND SEARCH BAR
     function userSearchedHostelName(event) {
         setSuggestionBoxOpen(true)
         setValue(event.target.value)//THIS MAKES SURE THAT AS THE USER TYPES THE TEXT IS DISPLAYED ON THE THE SEARCH INPUT
@@ -123,7 +124,7 @@ export function HomePage({ hostelsCardData, navlink, setNavLink, sethostelsCardD
             .trim()
             .replace(/\s+/g, " ")
             .toLowerCase();
-        
+
 
         //THIS CODE FIRST RUNS THE typedtext TO SEE IF ANY OF THE HOSTEL NAME CONTAINS THE LETTER OR SEQUENCE OF LETTERS
         //THE IF THE typedtext LENGTH IS ZERO IT JUST HIDES THE SUGGESTION BOX, IF NOT IS SHOWS IT
@@ -135,7 +136,7 @@ export function HomePage({ hostelsCardData, navlink, setNavLink, sethostelsCardD
     }
 
 
-    
+
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -149,7 +150,7 @@ export function HomePage({ hostelsCardData, navlink, setNavLink, sethostelsCardD
 
     //THIS FUNCTION TAKES THE HOSTEL NAME AS A PARAMETER, IT THE FILTERS THE HOSTEL IN THE originalHostelCardData
     //TO SEE IF ANY HOSTEL NAME MATCH IF IT DOES THEN IT sethostelsCardData TO THAT HOSTEL OBJECT
-    function suggestionHostelClicked(parameter){
+    function suggestionHostelClicked(parameter) {
         setSuggestionBoxOpen(false)
         setValue(parameter)
 
@@ -160,18 +161,32 @@ export function HomePage({ hostelsCardData, navlink, setNavLink, sethostelsCardD
         sethostelsCardData(filteredHostel);
     }
 
+
+    const [hostelsFound, setHostelsFound] = useState(true);
     function searchHostelByName() {
         //THIS WILL MAKE SURE NOTHING HAPPENS WHEN THE USER PREESES 
         // THE SEARCH BUTTON WHEN THERE IS NOTHING IN THE SEARCH INPUT
-        if(!searchHostelName){
+        if (!searchHostelName) {
             return;
         }
-        const filteredHostels = originalHostelCardData.filter(
+        let filteredHostels = false
+        filteredHostels = originalHostelCardData.filter(
             (hostel) => hostel.name.trim().replace(/\s+/g, " ").toLowerCase() === searchHostelName
         )
-        sethostelsCardData(filteredHostels);
+
+        console.log(filteredHostels)
+
+        if (filteredHostels.length === 0) {
+            sethostelsCardData([])//THIS WILL EMPTY ANY VALUE IN hostelsCardData
+            setHostelsFound(false)//AND THIS WILL DISPLAY THE NOT FOUND TEXT
+
+        } else {
+            sethostelsCardData(filteredHostels);
+            console.log(filteredHostels)
+        }
+
     }
-    
+
 
 
 
@@ -179,7 +194,7 @@ export function HomePage({ hostelsCardData, navlink, setNavLink, sethostelsCardD
 
     return (
         <>
-            <PageHeader navlink={navlink} setNavLink={setNavLink} sethostelsCardData={sethostelsCardData} originalHostelCardData={originalHostelCardData} />
+            <PageHeader navlink={navlink} setNavLink={setNavLink} sethostelsCardData={sethostelsCardData} originalHostelCardData={originalHostelCardData} setHostelsFound={setHostelsFound} />
             <section>
                 <button className="filter-image js-filter-image" onClick={openFilterMenu}>
                     <img src={filterImage}></img>
@@ -261,13 +276,19 @@ export function HomePage({ hostelsCardData, navlink, setNavLink, sethostelsCardD
                             }) : ''
                         }
 
-                        
+
                     </div>
                 </div>
             </section>
 
 
             <section className="hostels-section">
+                {hostelsFound ? "" :
+                    <div className="no-results">
+                        <p className="not-found-text">No Hostel Found With Name <span className="not-found-hostel-name">{searchHostelName}</span></p>
+                        <img src={noResultImage} className="not-found-icon" alt="Sort"></img>
+                    </div>
+                }
                 <div className="hostels-cards js-hostel-cards">
                     {hostelsCardData.map((hostel) => {
                         return (
