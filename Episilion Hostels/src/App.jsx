@@ -33,7 +33,7 @@ function App() {
         <Route index element={<HomePage hostelsCardData={hostelsCardData} sethostelsCardData={sethostelsCardData} 
         navlink={navlink} setNavLink={setNavLink} originalHostelCardData={originalHostelCardData} setOriginalHostelCardData={setOriginalHostelCardData}   />}/>
 
-        <Route path="moreDetails" element={<MoreDetailsPage hostelsCardData={hostelsCardData} navlink={navlink} setNavLink={setNavLink} />} />
+        <Route path="moreDetails" element={<MoreDetailsPage hostelsCardData={hostelsCardData} navlink={navlink} setNavLink={setNavLink} originalHostelCardData={originalHostelCardData} />} />
         <Route path="aboutus" element={<AboutUsPage navlink={navlink} setNavLink={setNavLink} />} />
         <Route path="signup" element={<SignUpPage navlink={navlink} setNavLink={setNavLink} />} />
         <Route path="login" element={<LoginPage navlink={navlink} setNavLink={setNavLink} />} />

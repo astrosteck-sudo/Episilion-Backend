@@ -7,13 +7,54 @@ import Whatsapp from '../assets/icons/whatsapp-128.svg';
 import Email from '../assets/icons/email-14.svg';
 import Manager from '../assets/icons/manager-avatar.svg';
 import Clock from '../assets/icons/clock.svg';
+import closeMapImage from '../assets/icons/close.png';
+import { useState } from 'react';
 
-export function MoreDetailsPage({ hostelsCardData, navlink, setNavLink }) {
 
+export function MoreDetailsPage({ hostelsCardData, navlink, setNavLink, originalHostelCardData }) {
+    const [close, setClose] = useState(true)
     const params = new URLSearchParams(window.location.search);
 
     const hostelId = params.get("hostelId")
     // console.log(params)
+
+    const [googleMapSrc, setGoogleMapSrc] = useState('')
+    function showHostelLocationOnMap() {
+        setClose(false); 
+        
+        const hostel = originalHostelCardData.find(h => h.id === hostelId); 
+        if (hostel && hostel.location) { 
+            const { latitude, longitude } = hostel.location; 
+            console.log(latitude, longitude); 
+            // You can now use latitude and longitude to build your map URL 
+            const mapUrl = `https://www.google.com/maps?q=${latitude},${longitude}&hl=es&z=15&output=embed`; 
+            setGoogleMapSrc(mapUrl); 
+        } else { console.error("Hostel not found or missing location data."); }
+
+
+        // // Find the specific hostel data
+        // const hostel = hostelsCardData.find(h => h.id === hostelId);
+
+        // if (hostel && hostel.location) {
+        //     const { latitude, longitude } = hostel.location;
+        //     console.log(latitude, longitude)
+        //     // Correct URL format: use & to separate parameters
+        //     const mapUrl = `https://www.google.com/maps?q=${latitude},${longitude}&hl=es&z=15&output=embed`;
+
+        //     setGoogleMapSrc(mapUrl);
+        //     console.log("Loading Map for ID:", hostelId, "at:", latitude, longitude);
+        // } else {
+        //     console.error("Hostel not found or missing location data.");
+        // }
+    }
+
+    function closeMap() {
+        if (!close) {
+            setClose(true)
+        } else (
+            setClose(false)
+        )
+    }
 
     return (
         <>
@@ -44,9 +85,19 @@ export function MoreDetailsPage({ hostelsCardData, navlink, setNavLink }) {
                                             </p>
 
                                             <div className="view-location-container">
-                                                <button className="view-location js-view-location">View Location</button>
+                                                <button className="view-location js-view-location" onClick={showHostelLocationOnMap}>View Location</button>
                                                 <button className="view-location js-get-directions">Get Directions</button>
                                             </div>
+                                            <div className={`iframe-container ${close ? 'close' : ''}`}>
+                                                <div className='close-button'><img src={closeMapImage} alt="" className='close-image' onClick={closeMap} /></div>
+                                                <iframe
+                                                    src={googleMapSrc}
+                                                    className='iframe'
+                                                    frameborder="1"
+                                                    loading='lazy'
+                                                    title='Hostel Location'></iframe>
+                                            </div>
+
                                         </div>
                                     </div>
 
@@ -113,7 +164,7 @@ export function MoreDetailsPage({ hostelsCardData, navlink, setNavLink }) {
                                             <div className="management-contact">
                                                 <h2 className="font-header">Contacts</h2>
                                                 <Link className="contact-item js-phone-number-link" href={hostel.contact.phone}>
-                                                <img src={Phone} alt="Phone"></img>
+                                                    <img src={Phone} alt="Phone"></img>
                                                     <p className="font-paragraph js-phone-number">
                                                         {hostel.contact.phone}
                                                     </p>

@@ -236,6 +236,10 @@
   width: 100%;
   margin-top: 30px;
 }
+.gender-buttons{
+  display: flex;
+  justify-content: space-evenly;
+}
 .gender-button{
   width: 31.3%;/*THIS WILL MAKE SURE BOTH BUTTONS WILL TAKE 50% EACH OF THE SPACE*/
   background-color: #ffffff;
