@@ -31,7 +31,10 @@ export function PageHeader({ substituteLink, navlink, setNavLink, originalHostel
         <>
             <section className="header-section">
                 <Link className="episilion" to="/" onClick={resetValues}>
-                    <p>Episilion <div>Hostels</div></p>
+                    <div className='episilion-container'>       
+                        <p > <img src="/episilion_logo.svg" alt="" className='episilion-logo' />Episilion <div>Hostels</div></p>
+                    </div>
+                    
                 </Link>
                 <nav className={`navigation-links ${navlink ? 'active' : ''}`}>
                     {substituteLink}

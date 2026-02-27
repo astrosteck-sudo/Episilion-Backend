@@ -19,6 +19,13 @@
 
 }
 
+.episilion-logo{
+  width: 40px;
+  /* background: white; */
+  float: left;
+  margin-right: 5px;
+  border-radius: 5px 7px;
+}
 .prop-nav-link{
   opacity: 1;
   border: solid red;
@@ -49,13 +56,16 @@
   color: rgb(194, 8, 8); 
   text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
+.episilion:hover{
+  border: white solid;
+}
 .episilion p{
   font-family: BBHBartle;
 }
-.episilion:active {
+/* .episilion:active {
   border: solid white;
   border-radius: 10px;
-}
+} */
 .navigation-links{
   display: flex;
   flex-wrap: wrap;

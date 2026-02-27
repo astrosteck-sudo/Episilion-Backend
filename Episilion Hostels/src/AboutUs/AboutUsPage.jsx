@@ -23,6 +23,7 @@ export function AboutUsPage({ navlink, setNavLink }) {
 
     return (
         <>
+             <title>About Us | Episilion Hostels</title>
             <PageHeader navlink={navlink} setNavLink={setNavLink} substituteLink={<Link className="link" to="/">Home</Link>} />
 
             <main className='about-main'>
