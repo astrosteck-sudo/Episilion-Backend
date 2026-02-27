@@ -3,7 +3,7 @@ import styles from  './logins.module.css';
 import closedEye from '../assets/icons/closed-eyes.png'
 import { SiteFooter } from "../SiteFooter/SiteFooter";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 export function SignUpPage({ navlink, setNavLink }) {
@@ -15,6 +15,23 @@ export function SignUpPage({ navlink, setNavLink }) {
         };
     }, []);
 
+    const [type, setType] = useState('password');
+
+    function showpassword(parameter){
+        // if(type === 'password'){
+        //     setType('text')
+        // }else{
+        //     setType('password')
+        // }
+        //console.log('Show password has been clicked')
+        if(parameter === 'password'){
+            setType('text');
+        }else{
+            setType('password')
+        }
+        console.log(parameter)
+        
+    }
 
 
     return (
@@ -37,18 +54,20 @@ export function SignUpPage({ navlink, setNavLink }) {
                             </div>
 
                             <div className={styles["input-box"]}>
-                                <input type="password" id="user-password" required title="Enter Your Password Here"></input>
-                                <img className={styles["password-wrapper"]} src={closedEye} id="toggle-eye" alt="Show Password"></img>
+                                <input type={type} id="user-password" required title="Enter Your Password Here"></input>
                                 <label>Enter Your Password</label>
                             </div>
 
                             <div className={styles["input-box"]}>
-                                <input type="password" id="comfirm-user-password" required></input>
-                                <img className={styles["password-wrapper"]} src={closedEye} id="comfirm-toggle-eye" alt="Show Password"></img>
+                                <input type={type} id="comfirm-user-password" required></input>
                                 <label>Comfirm Password</label>
                             </div>
 
-                            <div className={styles["buttons"]}>
+                            <div className={styles["show-password"]}>
+                                <input type="checkbox" className={styles["show-password-checkbox"]} id="showPassword" onClick={() => showpassword(type)} /><label className={styles["show-password-text"]} for="showPassword">Show Password</label>
+                            </div>
+
+                            <div className={styles["buttons"]} >
                                 <button type="submit">Create Account</button>
                             </div>
                             <p className={styles["altenative-text"]}>Already Have An Account <Link to="/login">Login</Link></p>
