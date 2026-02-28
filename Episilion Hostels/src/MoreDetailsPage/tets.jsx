@@ -36,30 +36,30 @@ export function MoreDetailsPage({ hostelsCardData, navlink, setNavLink, original
         }
     }
 
-    function getDirectionsOnMap() {
-        setClose(false);
-        setActivate(true);
-        const hostel = originalHostelCardData.find(h => h.id === hostelId);
+    // function getDirectionsOnMap() {
+    //     setClose(false);
+    //     setActivate(true);
+    //     const hostel = originalHostelCardData.find(h => h.id === hostelId);
 
-        if (!navigator.geolocation) {
-            alert("Geolocation is not supported by your browser.");
-            return;
-        }
+    //     if (!navigator.geolocation) {
+    //         alert("Geolocation is not supported by your browser.");
+    //         return;
+    //     }
 
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                const userLat = position.coords.latitude;
-                const userLng = position.coords.longitude;
+    //     navigator.geolocation.getCurrentPosition(
+    //         (position) => {
+    //             const userLat = position.coords.latitude;
+    //             const userLng = position.coords.longitude;
 
-                const mapURL = `https://www.google.com/maps?q=${userLat},${userLng}+to+${hostel.latitude},${hostel.longitude}&output=embed;`
+    //             const mapURL = `https://www.google.com/maps?q=${userLat},${userLng}+to+${hostel.latitude},${hostel.longitude}&output=embed;`
 
-                setGoogleMapSrc(mapURL);
-            },
-            () => {
-                alert("Please allow location access.");
-            }
-        );
-    }
+    //             setGoogleMapSrc(mapURL);
+    //         },
+    //         () => {
+    //             alert("Please allow location access.");
+    //         }
+    //     );
+    // }
 
     function closeMap() {
         console.log('Close has bee clciked')
@@ -101,7 +101,7 @@ export function MoreDetailsPage({ hostelsCardData, navlink, setNavLink, original
 
                                             <div className="view-location-container">
                                                 <button className="view-location js-view-location" onClick={showHostelLocationOnMap}>View Location</button>
-                                                <button className="view-location js-get-directions" onClick={getDirectionsOnMap} >Get Directions</button>
+                                                <button className="view-location js-get-directions" >Get Directions</button>
                                             </div>
                                             <div className={`overlay-background ${activate ? 'activate' : ''}`}>
                                                 <div className='map-modal'>

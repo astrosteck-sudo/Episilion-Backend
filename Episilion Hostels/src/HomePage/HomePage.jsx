@@ -13,15 +13,15 @@ import { useEffect, useRef, useState } from "react";
 
 
 export function HomePage({ hostelsCardData, navlink, setNavLink, sethostelsCardData, originalHostelCardData }) {
-    const [gender, setGender] = useState('');
-    const [genderText, setGenderText] = useState('Search');
-    const [minPrice, setMinPrice] = useState();
-    const [maxPrice, setMaxPrice] = useState();
-    const [searchHostelName, setSearchHostelName] = useState('')
-    const [filter, setFilter] = useState();
-    const [suggestionBoxOpen, setSuggestionBoxOpen] = useState(true)
-    const [value, setValue] = useState('');
-    const [hostelsFound, setHostelsFound] = useState(true);
+    const [gender, setGender] = useState('');//THIS CONTROLS THE GENDER OT BE USED IN THE FILTERING PROCESS
+    const [genderText, setGenderText] = useState('Search');// THIS CONTROLS THE D=GENDER SHOWN IN THE SEARCH BUTTON IN THE FILTER MENUI
+    const [minPrice, setMinPrice] = useState();//THIS CONTROLS THE MIN PRICE IN THE FILTER
+    const [maxPrice, setMaxPrice] = useState();//THIS CONTROLS THE MAX PRICE IN THE FILTER
+    const [searchHostelName, setSearchHostelName] = useState('')//THIS CONTROLS THE HOSTEL NAME TYPE SBY THE USER WHICH WILL BE USED IN THE searchHostelByName FUNCTION
+    const [filter, setFilter] = useState();//THIS CONTROLS THE HOSTELS THAT PASSED THE CRITIRIA OF THE filter
+    const [suggestionBoxOpen, setSuggestionBoxOpen] = useState(true);//THIS CONTOLS THE CSS THAT DETERMINES WHEATHER OR NOT THE SUGGESTION BOX IS OPEN
+    const [value, setValue] = useState('');//THIS CONTROLLS THE TEXT THE USER TYPES IN THE SEARCH BOX 
+    const [hostelsFound, setHostelsFound] = useState(true);//THIS CONTROLS THE not found image AND text
 
     const filterMenu = useRef(null) //THIS WILL SELECT THE filter menu 
 

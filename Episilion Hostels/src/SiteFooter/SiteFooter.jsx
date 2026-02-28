@@ -1,5 +1,5 @@
 import './SiteFooter.css'
-
+import { Link } from 'react-router-dom'
 
 
 
@@ -15,9 +15,9 @@ export function SiteFooter() {
                 <div className="footer-content">
                     <p id="all-rights-text">&copy; 2026 Episilion. All rights reserved.</p>
                     <nav className="footer-links">
-                        <a href="abouts/about.html">About Us</a>
-                        <a href="more_from_us/more_from_us.html">More From Us</a>
-                        <a href="">Join Us</a>
+                        <Link to="/aboutus">About Us</Link>
+                        <Link to="/morefromus">More From Us</Link>
+                        <Link to="">Join Us</Link>
                     </nav>
                 </div>
             </footer>
