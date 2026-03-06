@@ -5,12 +5,12 @@
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "Episilion-Backend"
+    "url": "https://github.com/astrosteck-sudo/Episilion-Backend.git"
   },
   "license": "ISC",
   "author": "Paul Deon Foli",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
