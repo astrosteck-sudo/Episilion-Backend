@@ -15,8 +15,8 @@ import { useEffect, useRef, useState } from "react";
 export function HomePage({ hostelsCardData, navlink, setNavLink, sethostelsCardData, originalHostelCardData }) {
     const [gender, setGender] = useState('');//THIS CONTROLS THE GENDER OT BE USED IN THE FILTERING PROCESS
     const [genderText, setGenderText] = useState('Search');// THIS CONTROLS THE D=GENDER SHOWN IN THE SEARCH BUTTON IN THE FILTER MENUI
-    const [minPrice, setMinPrice] = useState();//THIS CONTROLS THE MIN PRICE IN THE FILTER
-    const [maxPrice, setMaxPrice] = useState();//THIS CONTROLS THE MAX PRICE IN THE FILTER
+    const [minPrice, setMinPrice] = useState('');//THIS CONTROLS THE MIN PRICE IN THE FILTER
+    const [maxPrice, setMaxPrice] = useState('');//THIS CONTROLS THE MAX PRICE IN THE FILTER
     const [searchHostelName, setSearchHostelName] = useState('')//THIS CONTROLS THE HOSTEL NAME TYPE SBY THE USER WHICH WILL BE USED IN THE searchHostelByName FUNCTION
     const [filter, setFilter] = useState();//THIS CONTROLS THE HOSTELS THAT PASSED THE CRITIRIA OF THE filter
     const [suggestionBoxOpen, setSuggestionBoxOpen] = useState(true);//THIS CONTOLS THE CSS THAT DETERMINES WHEATHER OR NOT THE SUGGESTION BOX IS OPEN
@@ -74,8 +74,12 @@ export function HomePage({ hostelsCardData, navlink, setNavLink, sethostelsCardD
             return;
         }
 
-        let userMinPrice = Number(minPrice);
-        let userMaxPrice = Number(maxPrice);
+
+        let userMinPrice = minPrice === '' ? 0 : Number(minPrice);
+        console.log(userMinPrice)
+
+        let userMaxPrice = maxPrice === '' ? 0 : Number(maxPrice);
+        console.log(userMaxPrice)
 
         //THIW WILL INTERCHANGE THE VALUES WHEN THE MIN PRICE IS GREATOR THAN THE MAX PRICE
         if (userMaxPrice < userMinPrice) {
@@ -96,8 +100,6 @@ export function HomePage({ hostelsCardData, navlink, setNavLink, sethostelsCardD
             filterMenu.current.style.opacity = 0;
             filterMenu.current.style.pointerEvents = 'none';
         } else if (gender || userMinPrice || userMaxPrice) {
-            console.log("Min Price", userMinPrice)
-            console.log("Max Price", userMaxPrice)
             const filteredHostels = originalHostelCardData.filter(
                 (hostel) => hostel.type === gender || hostel.pricing.priceMin >= userMinPrice && hostel.pricing.priceMin <= userMaxPrice
             )
@@ -218,8 +220,8 @@ export function HomePage({ hostelsCardData, navlink, setNavLink, sethostelsCardD
                 </button>
 
                 <div className="filter js-filter" ref={filterMenu}>
-                    <div className="close-button js-close-button" onClick={closeFilterMenu}>
-                        <img className="close-image" src={closeFilterImage}></img>
+                    <div className="filter-close-button js-close-button" onClick={closeFilterMenu}>
+                        <img className="filter-close-image" src={closeFilterImage}></img>
                     </div>
                     <div className="filter-by-items js-filter">
                         <h3 className="filter-header">By Gender</h3>

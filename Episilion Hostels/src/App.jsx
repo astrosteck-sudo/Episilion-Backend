@@ -16,9 +16,10 @@ function App() {
   const [navlink, setNavLink] = useState(false);
 
   const loadHostelsCard = async () => {
-    const response = await axios.get('./hostel_data/hostel_data.json')
-    setOriginalHostelCardData(response.data)//THIS DATA WILL NEVER CHANGE IN THE PROGRAM
-    sethostelsCardData(response.data);//THIS DATA WILL CHANGE BASED ON THE FILTER OPTIONS
+    const response = await axios.get('http://localhost:5000/api/data')
+    console.log(response.data)
+    setOriginalHostelCardData(response.data.data)//THIS DATA WILL NEVER CHANGE IN THE PROGRAM
+    sethostelsCardData(response.data.data);//THIS DATA WILL CHANGE BASED ON THE FILTER OPTIONS
   }
   useEffect(() => {
     loadHostelsCard();

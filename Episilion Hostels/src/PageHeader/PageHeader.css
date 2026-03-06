@@ -73,7 +73,7 @@
   flex: 1 1 auto;/*(flex_grow: 1)NAV TAKES REMAINING SPACE (flex_shrink: 1)SHRINKS IF SCREEN IS NARROW (flex-basis: auto)NATURAL SIZE.THIS MAKES NAV AUTOMATICALLY ADJUST TO DIFFRENT WIDTHS*/
   text-align: right;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   /* border: solid red; */
   padding-left: 50px;
 }
